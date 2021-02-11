@@ -26,7 +26,7 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
-	$.get("http://localhost:3000/project/" + idNumber, callBackFn);
+	$.get("https://cogs120-fb.herokuapp.com/project/" + idNumber, callBackFn);
 
 }
 
