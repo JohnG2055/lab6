@@ -10,7 +10,6 @@ $(document).ready(function() {
  */
 function initializePage() {
 	$('.project a').click(addProjectDetails);
-
 	// $('#colorBtn').click(randomizeColors);
 }
 
@@ -27,4 +26,16 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+	$.get("http://localhost:3000/project/" + idNumber, callBackFn);
+
+}
+
+function callBackFn(result) {
+	var html = '<h3>' + result.title + '</h3>' +
+		'<h4>' + result.date + '</h4>' +
+		'<img src="' + result.image + '" alt="Image" class="detailsImage"></img>' + 
+		result.summary
+
+	console.log(result)
+	$("#project" + result.id + " .thumbnail .details").html(html)
 }
